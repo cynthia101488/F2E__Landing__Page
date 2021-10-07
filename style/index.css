@@ -523,6 +523,35 @@ img {
   background-color: red;
 }
 
+.footer {
+  background-color: #333;
+}
+
+.footer__sec {
+  padding: 15px;
+}
+
+.footer__tit, .footer__desc, .footer__author {
+  margin: 0;
+}
+
+.footer__tit {
+  font-size: 18px;
+  color: #fff;
+}
+
+.footer__desc {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.footer__author{
+  margin-top: 4px;
+  font-size: 12px;
+  color: #ccc;
+}
+
 .ani-fade-in-top, .ani-fade-in-down {
   opacity: 0;
   transition: all 1s;
