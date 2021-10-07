@@ -17,7 +17,7 @@ setEvent();
 
 function renderPic() {
   picCount = swap(picCount);
-  elemPic.style = `background-image: url(../images/${picData[picCount]})`;
+  elemPic.style = `background-image: url('../images/${picData[picCount]}')`;
 }
 
 function swap(picCount) {
