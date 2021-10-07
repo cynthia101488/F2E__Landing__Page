@@ -17,7 +17,7 @@ setEvent();
 
 function renderPic() {
   picCount = swap(picCount);
-  elemPic.style = `background-image: url('../images/${picData[picCount]}')`;
+  elemPic.style = `background-image: url('https://cynthia101488.github.io/F2E__Landing__Page/images/${picData[picCount]}')`;
 }
 
 function swap(picCount) {
@@ -25,7 +25,7 @@ function swap(picCount) {
 }
 
 function getData() {
-  const api = '../data/activity.json';
+  const api = 'https://cynthia101488.github.io/F2E__Landing__Page/data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
