@@ -17,7 +17,7 @@ setEvent();
 
 function renderPic() {
   picCount = swap(picCount);
-  elemPic.style = `background-image: url('https:/raw.githubsercontent.com/cynthia101488/cynthia101488.github.io/F2E__Lmain/images/${picData[picCount]}')`;
+  elemPic.style = `background-image: url('https:/raw.githubsercontent.com/cynthia101488/cynthia101488.github.io/F2E__Landing__Page/main/images/${picData[picCount]}')`;
 }
 
 function swap(picCount) {
