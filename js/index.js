@@ -17,7 +17,7 @@ setEvent();
 
 function renderPic() {
   picCount = swap(picCount);
-  elemPic.style = `background-image: url('./images/${picData[picCount]}')`;
+  elemPic.style = `background-image: url('../images/${picData[picCount]}')`;
 }
 
 function swap(picCount) {
@@ -25,7 +25,7 @@ function swap(picCount) {
 }
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -117,7 +117,7 @@ function renderPerson() {
                 <span class="signup__text">人報名</span>
               </div>
               <div class="signup__btn">
-                <button class="btn">搶先報名 »</button>
+                <button class="btn" type="button">搶先報名 »</button>
               </div>`;
   } else {
     if (!isEnd) {
