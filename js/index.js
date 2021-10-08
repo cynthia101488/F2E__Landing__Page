@@ -3,13 +3,13 @@ const elemNav = document.querySelector('#Nav');
 const elemNavLink = document.querySelectorAll('.nav__item a');
 const elemVideo = document.querySelector('#Video');
 const picData = ['banr_ice.jpg', 'banr_mountain.jpg', 'banr_run.jpg', 'banr_snow.jpg'];
-const arrAni = ['ani-fade-in-top', 'ani-fade-in-down'];
+const aniArr = ['ani-fade-in-top', 'ani-fade-in-down'];
 let picCount = 0;
 let endTime = '';
 let personNum = 0;
 let isEnd = false;
 let isNavRender = false;
-let timer = setInterval(renderTime, 1000);
+let dateTimer = setInterval(renderTime, 1000);
 
 setInterval(renderPic, 5000);
 getData();
@@ -17,7 +17,7 @@ setEvent();
 
 function renderPic() {
   picCount = swap(picCount);
-  elemPic.style = `background-image: url('./images/${picData[picCount]}')`;
+  elemPic.style = `background-image: url('../images/${picData[picCount]}')`;
 }
 
 function swap(picCount) {
@@ -25,7 +25,7 @@ function swap(picCount) {
 }
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -67,13 +67,13 @@ function renderTime() {
     } else {
       str = `<p class="signup__sale">贈送完畢</p>
                 <span class="signup__time">我們提早結束優惠</span>`;
-      clearInterval(timer);
+      clearInterval(dateTimer);
     }
   } else {
     str = `<p class="signup__sale">優惠活動結束</p>
               <span class="signup__time">請再關注我們的優惠時間</span>`;
     isEnd = true;
-    clearInterval(timer);
+    clearInterval(dateTimer);
   }
   elemTime.innerHTML = str;
 }
@@ -129,6 +129,7 @@ function renderPerson() {
   elemPersonNum.innerHTML = str;
 }
 
+
 function setEvent() {
   const elemPlayBtn = document.querySelector('#PlayBtn');
   document.addEventListener('scroll', () => {
@@ -160,7 +161,7 @@ function scrollAni() {
   let dY = this.scrollY;
   let screenHeight = this.innerHeight;
 
-  arrAni.forEach(item => {
+  aniArr.forEach(item => {
     let elemItems = document.querySelectorAll(`.${item}`);
     elemItems.forEach(element => {
       if (element.classList.contains(`js-${item}`)) {
@@ -168,8 +169,27 @@ function scrollAni() {
       }
       if (dY > element.offsetTop - screenHeight / 2) {
         element.classList.add(`js-${item}`);
+        if (element.classList.contains('train__body')) {
+          animateNum();
+        }
       }
     });
+  });
+}
+
+function animateNum() {
+  const elemNum = document.querySelectorAll('.train__num');
+  elemNum.forEach(item => {
+    let count = 0;
+    const target = parseInt(item.innerText);
+    let timer = setInterval(renderNum, 10);
+    function renderNum() {
+      count = count + 1;
+      item.innerText = count;
+      if (count === target) {
+        clearInterval(timer);
+      }
+    }
   });
 }
 
