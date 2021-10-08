@@ -34,10 +34,14 @@
       </div>
     </header>
     <div class="signup container mx-auto">
-      <div class="signup__head" id="CountDown"></div>
-      <!-- progress bar -->
-      <div class="signup__body"></div>
-      <div class="signup__footer" id="personNum"></div>
+      <div class="signup__head" id="Time"></div>
+      <div class="signup__body">
+        <div class="signup__line">
+          <div class="signup__line signup__line--complete" id="Bar"></div>
+          <ul class="signup__ls" id="Progress"></ul>
+        </div>
+      </div>
+      <div class="signup__footer" id="PersonNum"></div>
     </div>
     <article class="challenge container mx-auto" id="challenge">
       <div class="challenge__head">
@@ -60,7 +64,8 @@
     </article>
     <div class="challenge__video" id="Video">
       <div class="video__inner">
-        <iframe class="video" src="https://www.youtube.com/embed/syFyL9tONRA" frameborder="0" width="560" height="310"></iframe>
+        <iframe class="video" src="https://www.youtube.com/embed/syFyL9tONRA" frameborder="0" width="560"
+          height="310"></iframe>
       </div>
     </div>
     <article class="course" id="course">
@@ -68,11 +73,11 @@
         <header class="course__header  ani-fade-in-top">
           <h2 class="course__tit">想要培養一技之長，成為前端工程師嗎？</h2>
         </header>
-        <section class="course__body row">
+        <section class="course__body">
           <div class="course__nav ani-fade-in-down">
             <p class="course__stage">第一階段</p>
           </div>
-          <div class="course__content">
+          <div class="course__content row">
             <div class="course__sec ani-fade-in-down">
               <div class="img__inner">
                 <img class="image" src="./images/card01.jpg" alt="程式規劃基礎" width="768" height="520">
@@ -105,11 +110,11 @@
             </div>
           </div>
         </section>
-        <section class="course__body row">
+        <section class="course__body">
           <div class="course__nav ani-fade-in-down">
             <p class="course__stage">第二階段</p>
           </div>
-          <div class="course__content">
+          <div class="course__content row">
             <div class="course__sec ani-fade-in-down">
               <div class="img__inner">
                 <img class="image" src="./images/card04.png" alt="各領域語言與框架介紹" width="638" height="395">
@@ -162,11 +167,11 @@
             </div>
           </div>
         </section>
-        <section class="course__body row">
+        <section class="course__body">
           <div class="course__nav ani-fade-in-down">
             <p class="course__stage">第三階段</p>
           </div>
-          <div class="course__content">
+          <div class="course__content row">
             <div class="course__sec ani-fade-in-down">
               <div class="img__inner">
                 <img class="image" src="./images/card09.png" alt="進程與執行緒" width="917" height="437">
@@ -209,11 +214,11 @@
             </div>
           </div>
         </section>
-        <section class="course__body row">
+        <section class="course__body">
           <div class="course__nav ani-fade-in-down">
             <p class="course__stage">第四階段</p>
           </div>
-          <div class="course__content">
+          <div class="course__content row">
             <div class="course__sec ani-fade-in-down">
               <div class="img__inner">
                 <img class="image" src="./images/card13.png" alt="一起來 Vue 出前端的世界" width="750" height="375">
@@ -249,9 +254,8 @@
         <div class="course__btn">
           <button class="btn">我有興趣 »</button>
         </div>
+      </div>
     </article>
-    </div>
-
     <article class="train container mx-auto" id="train">
       <header class="train__header ani-fade-in-top">
         <h2 class="train__tit">培訓成果</h2>

@@ -115,7 +115,7 @@ img {
   justify-content: center;
 }
 
-.signup__head, .signup__body, .signup__footer {
+.signup__head, .signup__footer {
   box-sizing: border-box;
   height: 110px;
   margin-left: 15px;
@@ -146,8 +146,95 @@ img {
 }
 
 .signup__body {
+  position: relative;
   width: 410px;
   background-color: #4dc4e1;
+}
+
+.signup__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 300px;
+  height: 5px;
+  background-color: #ddd;
+}
+
+.signup__line--complete {
+  width: 70%;
+  height: 100%;
+  margin: 0;
+  background-color: #22a9ca;
+}
+
+.signup__ls {
+  position: absolute;
+  top: -28px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.signup__item {
+  position: absolute;
+  text-align: center;
+}
+
+.item-0 {
+  top: 22px;
+  transform: translateX(-30px);
+}
+
+.item-1 {
+  transform: translateX(50px);
+}
+
+.item-2 {
+  transform: translateX(110px);
+}
+
+.item-3 {
+  transform: translateX(260px);
+}
+
+.signup__box {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.signup__box--complete {
+  background-color: #22a9ca;
+}
+
+.signup__box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.signup__top {
+  margin-bottom: 4px;
+}
+
+.signup__bottom {
+  margin-top: 4px;
 }
 
 .signup__footer {
@@ -156,14 +243,18 @@ img {
   background-color: #918eec;
 }
 
-.signup__num {
+.signup__text {
   font-size: 18px;
   color: #fff;
 }
 
-.signup__num--lg {
+.text--lg {
   font-size: 30px;
   font-weight: 900;
+}
+
+.text--sm {
+  font-size: 12px;
 }
 
 .signup__full {
@@ -221,8 +312,7 @@ img {
   content: "";
   position: absolute;
   background-size: cover;
-  width: 160%;
-  height: 100%;
+  background-repeat: no-repeat;
   transform: skewX(30deg);
   transform-origin: inherit;
 }
