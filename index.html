@@ -8,20 +8,30 @@
   <title>前端工程師</title>
   <link rel="stylesheet" href="./style/index.css">
   <link rel="icon" href="./favorite.ico" type="image/x-ico" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
   <main class="main">
     <header class="header">
       <nav class="nav" id="Nav">
-        <div class="img_inner">
-          <img class="image" src="./images/logo.png" alt="F2E 前端開發" width="167" height="50">
+        <div class="nav__head">
+          <div class="img_inner">
+            <img class="image" src="./images/logo.png" alt="F2E 前端開發" width="167" height="50">
+          </div>
+          <div class="nav__btn" id="NavBtn">
+            <button class="btn" type="button">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
         </div>
-        <div class="nav__link">
-          <ul class="nav__ls">
-            <li class="nav__item"><a href="#challenge">挑戰自我</a></li>
-            <li class="nav__item"><a href="#course">課程說明</a></li>
-            <li class="nav__item"><a href="#train">培訓成果</a></li>
+        <div class="nav__link" id="NavList">
+          <ul class="nav__ls js-nav__ls">
+            <a class="link" href="#challenge"><li class="nav__item">挑戰自我</li></a>
+            <a class="link" href="#course"><li class="nav__item">課程說明</li></a></li>
+            <a class="link"href="#train"><li class="nav__item">培訓成果</li></a></li>
           </ul>
         </div>
       </nav>
@@ -35,7 +45,7 @@
     </header>
     <div class="signup container mx-auto">
       <div class="signup__head" id="Time"></div>
-      <div class="signup__body">
+      <div class="signup__body signup__body--first">
         <div class="signup__line">
           <div class="signup__line signup__line--complete" id="Bar"></div>
           <ul class="signup__ls" id="Progress"></ul>

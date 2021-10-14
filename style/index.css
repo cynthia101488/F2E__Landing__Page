@@ -49,6 +49,17 @@ img {
   width: 150px;
 }
 
+.nav__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.nav__btn {
+  display: none;
+}
+
 .nav__ls {
   display: flex;
   margin: 0;
@@ -56,18 +67,19 @@ img {
   list-style-type: none;
 }
 
-.nav__item {
-  margin-left: 15px;
-}
-
-.nav__item a {
+.nav__ls a {
   text-decoration: none;
   color: #24b4d7;
 }
 
-.nav__item a:hover {
+.nav__ls a:hover {
   color: #000;
 }
+
+.nav__item {
+  margin-left: 15px;
+}
+
 
 .banner {
   position: relative;
@@ -396,6 +408,7 @@ img {
 .challenge__video {
   display: none;
   position: fixed;
+  z-index: 1;
   top: 0;
   width: 100%;
   height: 100%;
@@ -739,7 +752,6 @@ img {
 
   .challenge__btn {
     margin-top: 360px;
-    text-align: center;
   }
 
   .course__header {
@@ -763,13 +775,13 @@ img {
   }
 
   .top {
-    position: fixed;
+    width: 100%;
     bottom: 50px;
     right: 25px;
   }
   
   .top .btn {
-    right: 0;
+    right: 25px;
   }
 }
 
@@ -804,12 +816,10 @@ img {
 
   .signup__sale {
     font-size: 24px;
-    color: #fff;
   }
 
   .signup__time {
     font-size: 16px;
-    color: #fff;
   }
 
   .signup__time--lg {
@@ -834,7 +844,6 @@ img {
 
   .signup__text {
     font-size: 16px;
-    color: #fff;
   }
 
   .text--lg {
@@ -868,7 +877,6 @@ img {
   }
 
   .challenge .img__inner::after {
-    background-image: url("../images/media_talk.jpg");
     width: 100%;
   }
 
@@ -880,13 +888,11 @@ img {
   }
 
   .challenge .screenshot__inner::after {
-    background-image: url("../images/media_video.jpg");
     background-position: center;
     width: 100%;
   }
 
   .icon__inner {
-    position: absolute;
     top: 230px;
     left: 330px;
     transform: skewX(0);
@@ -906,8 +912,6 @@ img {
   }
 
   .course__sec + .course__sec::after {
-    content: "»";
-    position: absolute;
     top: -60px;
     left: 340px;
     transform: rotate(90deg);
@@ -923,8 +927,6 @@ img {
   }
 
   .train__head {
-    display: flex;
-    justify-content: center;
     margin-bottom: 90px;
   }
 
@@ -944,5 +946,199 @@ img {
 
   .footer__sec {
     text-align: center;
+  }
+
+  .top {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 450px;
+  }
+
+  .nav {
+    display: block;
+    padding: 0;
+  }
+
+  .nav__btn {
+    display: block ;
+  }
+
+  .nav__btn .btn {
+    margin-right: 15px;
+    padding: 0;
+    font-size: 30px;
+    color: #666;
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+  }
+
+  .nav__link {
+    display: none;
+    background-color: rgba(256,256,256,.7);
+  }
+
+  .nav__ls {
+    flex-direction: column;
+  }
+  
+  .js-nav__ls {
+    display: block;
+  }
+
+  .nav__item {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .banner {
+    height: 680px;
+    background-position: center;
+  }
+
+  .banner__info {
+    width: 420px;
+    height: 210px;
+    padding: 30px 0;
+  }
+
+  .banner__subtit {
+    font-size: 24px;
+  }
+
+  .banner__tit {
+    font-size: 40px;
+  }
+  
+  .banner__desc {
+    font-size: 24px;
+  }
+
+  .signup {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .signup__body--first {
+    order: -1;
+  }
+
+  .signup__head, .signup__footer {
+    width: 50%;
+  }
+
+  .signup__body {
+    width: 100%;
+    height: 100px;
+  }
+
+  .signup__line {
+    width: 380px;
+  }
+
+  .item-1 {
+    transform: translateX(70px);
+  }
+
+  .item-2 {
+    transform: translateX(155px);
+  }
+
+  .item-3 {
+    transform: translateX(350px);
+  }
+
+  .challenge {
+    width: 100%;
+    margin-top: -30px;
+  }
+
+  .challenge__tit {
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+
+  .challenge__body {
+    font-size: 16px;
+  }
+  
+  .challenge .img__inner {
+    height: 270px;
+  }
+
+  .challenge .screenshot__inner {
+    height: 340px;
+  }
+
+  .icon__inner {
+    top: 130px;
+    left: 190px;
+  }
+
+  .course__tit {
+    width: 430px;
+  }
+
+  .challenge__btn {
+    margin-top: 100px;
+  }
+
+  .video__inner {
+    width: 400px;
+    height: 220px;
+  }
+
+  .video__inner .video {
+    width: 100%;
+    height: 100%;
+  }
+
+  .course__header {
+    padding-top: 130px;
+  }
+
+  .course__tit {
+    width: 430px;
+    font-size: 22px;
+  }
+
+  .course__sec + .course__sec::after {
+    left: 200px;
+  }
+
+  .course__sec .img__inner {
+    height: 240px;
+  }
+
+  .train__head {
+    flex-direction: column;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 50px;
+    
+  }
+
+  .train__body {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .train__table {
+    width: 420px;
+    margin-bottom: 80px;
+  }
+
+  .train__tabletit, .train__item {
+    font-size: 14px;
+  }
+
+  .top {
+    width: 100%;
   }
 }

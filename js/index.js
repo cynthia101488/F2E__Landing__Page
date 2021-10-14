@@ -1,6 +1,8 @@
 const elemPic = document.querySelector('#Banner');
 const elemNav = document.querySelector('#Nav');
-const elemNavLink = document.querySelectorAll('.nav__item a');
+const elemNavLink = document.querySelectorAll('.nav__ls a');
+const elemNavList = document.querySelector('#NavList');
+const elemNavBtn = document.querySelector('#NavBtn');
 const elemVideo = document.querySelector('#Video');
 const elemTop = document.querySelector('#Top');
 const picData = ['banr_ice.jpg', 'banr_mountain.jpg', 'banr_run.jpg', 'banr_snow.jpg'];
@@ -18,7 +20,7 @@ setEvent();
 
 function renderPic() {
   picCount = swap(picCount);
-  elemPic.style = `background-image: url('./images/${picData[picCount]}')`;
+  elemPic.style = `background-image: url('../images/${picData[picCount]}')`;
 }
 
 function swap(picCount) {
@@ -26,7 +28,7 @@ function swap(picCount) {
 }
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -136,6 +138,9 @@ function setEvent() {
     renderNav();
     scrollAni();
   });
+
+  elemNavBtn.addEventListener('click', showList);
+  document.addEventListener('click', hideList);
   elemPlayBtn.addEventListener('click', showVideo);
   elemVideo.addEventListener('click', hideVideo);
   document.addEventListener('keyup', hideVideo);
@@ -144,13 +149,17 @@ function setEvent() {
 function renderNav() {
   if (!isNavRender) {
     elemNav.style = 'background-color: rgba(256,256,256,.7)';
+    elemNavList.style.backgroundColor = 'rgba(256,256,256, 0)';
     elemNavLink.forEach(item => {
-      item.style = 'color: #000';
+      item.style.color = '#000';
+      item.style.fontSize = '18px';
       item.addEventListener('mouseenter', () => {
-        item.style = 'color: #24b4d7';
+        item.style.color = '#24b4d7';
+        item.style.fontSize = '18px';
       });
       item.addEventListener('mouseleave', () => {
-        item.style = 'color: #000';
+        item.style.color = '#000';
+        item.style.fontSize = '18px';
       });
     });
     isNavRender = true;
@@ -170,27 +179,36 @@ function scrollAni() {
       if (dY > element.offsetTop - screenHeight / 2) {
         element.classList.add(`js-${item}`);
         if (element.classList.contains('train__body')) {
-          animateNum();
+          animateNum(element);
         }
       }
     });
   });
 }
 
-function animateNum() {
-  const elemNum = document.querySelectorAll('.train__num');
-  elemNum.forEach(item => {
-    let count = 0;
-    const target = parseInt(item.innerText);
-    let timer = setInterval(renderNum, 10);
-    function renderNum() {
-      count = count + 1;
-      item.innerText = count;
-      if (count === target) {
-        clearInterval(timer);
-      }
+function animateNum(item) {
+  let count = 0;
+  const target = parseInt(item.innerText);
+  let timer = setInterval(renderNum, 10);
+  function renderNum() {
+    count = count + 1;
+    item.childNodes[1].innerText = count;
+    if (count === target) {
+      clearInterval(timer);
     }
-  });
+  }
+}
+
+function showList(e) {
+  e.stopPropagation();
+  elemNavList.classList.toggle('js-nav__ls');
+}
+
+function hideList(e) {
+  const self = e.target;
+  if (self.className !== 'nav__item' && self.className !== 'link') {
+    elemNavList.classList.remove('js-nav__ls');
+  }
 }
 
 function showVideo() {
