@@ -295,8 +295,8 @@ img {
 }
 
 .signup__btn .btn:hover {
-  color: #fff;
-  background-color: red;
+  color: #544fe2;
+  background-color: #ddd;
 }
 
 .challenge {
@@ -402,7 +402,7 @@ img {
 
 .challenge__btn .btn:hover {
   color: #fff;
-  background-color: red;
+  background-color: #087eac;
 }
 
 .challenge__video {
@@ -543,8 +543,8 @@ img {
 }
 
 .course__btn .btn:hover {
-  color: #fff;
-  background-color: red;
+  color: #24b4d7;
+  background-color: #ddd;
 }
 
 .train__tit {
@@ -628,7 +628,7 @@ img {
 
 .train__btn .btn:hover {
   color: #fff;
-  background-color: red;
+  background-color: #087eac;
 }
 
 .footer {
