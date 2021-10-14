@@ -20,7 +20,7 @@ setEvent();
 function renderPic() {
   const elemPic = document.querySelector('#Banner');
   picCount = swap(picCount);
-  elemPic.style = `background-image: url('../images/${picData[picCount]}')`;
+  elemPic.style = `background-image: url('./images/${picData[picCount]}')`;
 }
 
 function swap(picCount) {
@@ -28,7 +28,7 @@ function swap(picCount) {
 }
 
 function getData() {
-  const api = '../data/activity.json';
+  const api = './data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
