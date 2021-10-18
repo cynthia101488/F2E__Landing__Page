@@ -15,27 +15,33 @@
 
 <body>
   <main class="main">
+    <nav class="nav" id="Nav">
+      <div class="nav__head">
+        <div class="img_inner">
+          <img class="image" src="./images/logo.png" alt="F2E 前端開發" width="167" height="50">
+        </div>
+        <div class="nav__btn" id="NavBtn">
+          <button class="btn" type="button">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <div class="nav__link" id="NavList">
+        <ul class="nav__ls js-nav__ls">
+          <a class="link" href="#challenge"><li class="nav__item">挑戰自我</li></a>
+          <a class="link" href="#course"><li class="nav__item">課程說明</li></a></li>
+          <a class="link"href="#train"><li class="nav__item">培訓成果</li></a></li>
+        </ul>
+      </div>
+    </nav>
     <header class="header">
-      <nav class="nav" id="Nav">
-        <div class="nav__head">
-          <div class="img_inner">
-            <img class="image" src="./images/logo.png" alt="F2E 前端開發" width="167" height="50">
-          </div>
-          <div class="nav__btn" id="NavBtn">
-            <button class="btn" type="button">
-              <i class="fas fa-bars"></i>
-            </button>
-          </div>
-        </div>
-        <div class="nav__link" id="NavList">
-          <ul class="nav__ls js-nav__ls">
-            <a class="link" href="#challenge"><li class="nav__item">挑戰自我</li></a>
-            <a class="link" href="#course"><li class="nav__item">課程說明</li></a></li>
-            <a class="link"href="#train"><li class="nav__item">培訓成果</li></a></li>
-          </ul>
-        </div>
-      </nav>
       <div class="banner" id="Banner">
+        <div class="banner__img">
+          <div class="img__inner"><img src="./images/banr_ice.jpg" alt=""></div>
+          <div class="img__inner"><img src="./images/banr_mountain.jpg" alt=""></div>
+          <div class="img__inner"><img src="./images/banr_run.jpg" alt=""></div>
+          <div class="img__inner"><img src="./images/banr_snow.jpg" alt=""></div>
+        </div>
         <div class="banner__info">
           <h2 class="banner__subtit">F2E 前端開發</h2>
           <h1 class="banner__tit">前端工程師排版試題</h1>
@@ -74,7 +80,7 @@
     </article>
     <div class="challenge__video" id="Video">
       <div class="video__inner">
-        <iframe class="video" src="https://www.youtube.com/embed/syFyL9tONRA" frameborder="0" width="560"
+        <iframe class="video" src="https://www.youtube.com/embed/syFyL9tONRA?" frameborder="0" width="560"
           height="310"></iframe>
       </div>
     </div>

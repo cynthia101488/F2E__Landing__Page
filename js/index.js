@@ -4,31 +4,18 @@ const elemNavList = document.querySelector('#NavList');
 const elemNavBtn = document.querySelector('#NavBtn');
 const elemVideo = document.querySelector('#Video');
 const elemTop = document.querySelector('#Top');
-const picData = ['banr_ice.jpg', 'banr_mountain.jpg', 'banr_run.jpg', 'banr_snow.jpg'];
 const aniArr = ['ani-fade-in-top', 'ani-fade-in-down'];
-let picCount = 0;
 let endTime = '';
 let personNum = 0;
+let totalNum = 100;
 let isEnd = false;
-let isNavRender = false;
 let dateTimer = setInterval(renderTime, 1000);
 
-setInterval(renderPic, 5000);
 getData();
 setEvent();
 
-function renderPic() {
-  const elemPic = document.querySelector('#Banner');
-  picCount = swap(picCount);
-  elemPic.style = `background-image: url('./images/${picData[picCount]}')`;
-}
-
-function swap(picCount) {
-  return picCount < picData.length - 1 ? picCount += 1 : 0;
-}
-
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -85,8 +72,8 @@ function renderProgress(arr) {
   const elemProgress = document.querySelector('#Progress');
   const elemBar = document.querySelector('#Bar');
   let str = '';
-  arr.forEach((item, index) => {
-    str += `<li class="signup__item item-${index + 1}">
+  arr.forEach(item => {
+    str += `<li class="signup__item" style="left: ${item.level/totalNum*100 + '%'}">
               <div class="signup__top">
                 <span class="signup__text text--sm">達</span>
                 <span class="signup__text text--sm">${item.level}</span>
@@ -100,14 +87,14 @@ function renderProgress(arr) {
             </li>`
   });
 
-  elemProgress.innerHTML = `<li class="signup__item item-0">
+  elemProgress.innerHTML = `<li class="signup__item item-first">
                               <div class="signup__box signup__box--complete"></div>
                               <div class="signup__bottom">
                                 <span class="signup__text text--sm">預購開始</span>
                               </div>
                             </li>` + str;
 
-  elemBar.style = `width: ${personNum + '%'}`;
+  elemBar.style = `width: ${personNum/totalNum*100 + '%'}`;
 }
 
 function renderPerson() {
@@ -147,22 +134,34 @@ function setEvent() {
 }
 
 function renderNav() {
-  if (!isNavRender) {
+  let dY = this.scrollY;
+  if (dY > 0) {
     elemNav.style = 'background-color: rgba(256,256,256,.7)';
-    elemNavList.style.backgroundColor = 'rgba(256,256,256, 0)';
+    elemNavList.style.backgroundColor = 'rgba(256,256,256,0)';
     elemNavLink.forEach(item => {
       item.style.color = '#000';
-      item.style.fontSize = '18px';
       item.addEventListener('mouseenter', () => {
         item.style.color = '#24b4d7';
-        item.style.fontSize = '18px';
       });
       item.addEventListener('mouseleave', () => {
         item.style.color = '#000';
-        item.style.fontSize = '18px';
       });
     });
-    isNavRender = true;
+  } else {
+    elemNav.style = 'background-color: rgba(256,256,256, 0)';
+    if (screen.width <= 480) {
+      elemNavList.style.backgroundColor = 'rgba(256,256,256,.7)';
+    }
+    elemNavLink.forEach(item => {
+      item.classList.remove('js-nav-top');
+      item.style.color = '#24b4d7';
+      item.addEventListener('mouseenter', () => {
+        item.style.color = '#000';
+      });
+      item.addEventListener('mouseleave', () => {
+        item.style.color = '#24b4d7';
+      });
+    });
   }
 }
 
@@ -215,6 +214,7 @@ function showVideo() {
   elemVideo.style = 'display: block';
   document.body.style = 'overflow: hidden';
   elemTop.style = 'display: none';
+  elemVideo.querySelector('iframe').src = 'https://www.youtube.com/embed/syFyL9tONRA';
 }
 
 function hideVideo(e) {
@@ -222,5 +222,6 @@ function hideVideo(e) {
     elemVideo.style = 'display: none';
     document.body.style = 'overflow: auto';
     elemTop.style = 'display: block';
+    elemVideo.querySelector('iframe').src = '';
   }
 }
