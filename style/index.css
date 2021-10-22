@@ -214,9 +214,9 @@ img {
 }
 
 .signup__textbox {
-  display: inline-block;
   position: relative;
   left: 50%;
+  display: inline-block;
 }
 
 .signup__textbox--top {
@@ -230,7 +230,7 @@ img {
 .signup__line {
   width: 0;
   height: 5px;
-  margin: 0;
+  /* margin: 0; */
   background-color: #22a9ca;
 }
 
@@ -274,7 +274,6 @@ img {
   width: 16px;
   height: 16px;
   margin: auto;
-  color: #fff;
   background-color: #ddd;
   border-radius: 50%;
 }
@@ -713,9 +712,12 @@ img {
   text-align: right;
 }
 
-.top .btn {
+.top a {
   position: relative;
   right: -115px;
+}
+
+.top .btn {
   box-sizing: border-box;
   width: 80px;
   height: 65px;
@@ -775,13 +777,13 @@ img {
     width: auto;
   }
 
-  .banner__img {
-    height: 750px;
-  }
-
-  .signup__head, .signup__body, .signup__footer {
+  .row {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .banner__img {
+    height: 750px;
   }
 
   .signup__head {
@@ -796,20 +798,24 @@ img {
     width: 275px;
   }
 
+  .challenge__head {
+    padding-left: 15px;
+  }
+
   .challenge__tit {
     margin-bottom: 30px;
     font-size: 36px;
   }
 
   .challenge .img__inner {
-    left: 395px;
+    left: 410px;
     width: 380px;
     height: 380px;
   }
 
   .challenge .screenshot__inner {
     top: 250px;
-    left: 0;
+    left: 15px;
     width: 510px;
     height: 250px;
   }
@@ -837,6 +843,8 @@ img {
 
   .train__body {
     width: 275px;
+    margin-left: 18px;
+    margin-right: 18px;
   }
 
   .train__table {
@@ -847,9 +855,10 @@ img {
     width: 100%;
     bottom: 50px;
     right: 25px;
+    margin: 0;
   }
   
-  .top .btn {
+  .top a {
     right: 25px;
   }
 }
@@ -1003,10 +1012,6 @@ img {
 
   .footer__sec {
     text-align: center;
-  }
-
-  .top {
-    width: 100%;
   }
 }
 
