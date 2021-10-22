@@ -27,10 +27,10 @@
         </div>
       </div>
       <div class="nav__link" id="NavList">
-        <ul class="nav__ls js-nav__ls">
-          <a class="link" href="#challenge"><li class="nav__item">挑戰自我</li></a>
-          <a class="link" href="#course"><li class="nav__item">課程說明</li></a></li>
-          <a class="link"href="#train"><li class="nav__item">培訓成果</li></a></li>
+        <ul class="nav__ls">
+          <a href="#challenge"><li class="nav__item">挑戰自我</li></a>
+          <a href="#course"><li class="nav__item">課程說明</li></a></li>
+          <a href="#train"><li class="nav__item">培訓成果</li></a></li>
         </ul>
       </div>
     </nav>
@@ -52,10 +52,10 @@
     <div class="signup container mx-auto">
       <div class="signup__head" id="Time"></div>
       <div class="signup__body signup__body--first">
-        <div class="signup__line">
-          <div class="signup__line signup__line--complete" id="Bar"></div>
+        <!-- <div class="signup__line"> -->
+          <!-- <div class="signup__line signup__line--complete" id="Bar"></div> -->
           <ul class="signup__ls" id="Progress"></ul>
-        </div>
+        <!-- </div> -->
       </div>
       <div class="signup__footer" id="PersonNum"></div>
     </div>
@@ -80,7 +80,7 @@
     </article>
     <div class="challenge__video" id="Video">
       <div class="video__inner">
-        <iframe class="video" src="https://www.youtube.com/embed/syFyL9tONRA?" frameborder="0" width="560"
+        <iframe class="video" data-src="https://www.youtube.com/embed/syFyL9tONRA" src="" frameborder="0" width="560"
           height="310"></iframe>
       </div>
     </div>
@@ -278,17 +278,17 @@
       </header>
       <div class="train__head">
         <div class="train__body ani-fade-in-down">
-          <span class="train__num" id='Num'>159</span>
+          <span class="train__num" data-num="159">0</span>
           <span class="train__text">人</span>
           <p class="train__text">結訓校友</p>
         </div>
         <div class="train__body ani-fade-in-down">
-          <span class="train__num">85</span>
+          <span class="train__num" data-num="85">0</span>
           <span class="train__text">%</span>
           <p class="train__text">成功轉職率</p>
         </div>
         <div class="train__body ani-fade-in-down">
-          <span class="train__num">90</span>
+          <span class="train__num" data-num="90">0</span>
           <span class="train__text">%</span>
           <p class="train__text">成為前端工程師</p>
         </div>
@@ -353,7 +353,7 @@
       <p class="footer__author">Design by Away</p>
     </div>
   </footer>
-  <div class="top container mx-auto" id="Top">
+  <div class="top container mx-auto js-show" id="Top">
     <a href="#"><button class="btn" type="button">TOP</button></a>
   </div>
   <script src="./js/index.js"></script>

@@ -38,7 +38,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   padding: 10px;
   background-color: rgba(0,0,0,0);
 }
@@ -192,91 +192,57 @@ img {
 }
 
 .signup__body {
+  position: relative;
   width: 410px;
-  padding-top: 35px;
-  padding-left: 50px;
-  padding-right: 50px;
   background-color: #4dc4e1;
 }
 
-.signup__ls {
-  display: flex;
-  align-items: center;
+.signup__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 300px;
   height: 5px;
-  padding: 0;
-  list-style-type: none;
   background-color: #ddd;
 }
 
-.signup__item {
-  position: relative;
-  display: inline-block;
-}
-
-.signup__textbox {
-  display: inline-block;
-  position: relative;
-  left: 50%;
-}
-
-.signup__textbox--top {
-  margin-bottom: 10px;
-}
-
-.signup__textbox--bottom {
-  margin-top: 10px;
-}
-
-.signup__line {
-  width: 0;
-  height: 5px;
+.signup__line--complete {
+  width: 70%;
+  height: 100%;
   margin: 0;
   background-color: #22a9ca;
 }
 
-.signup__item:first-child::before {
-  content: "";
+.signup__ls {
   position: absolute;
   top: 0;
-  bottom: 0;
-  display: block;
-  width: 16px;
-  height: 16px;
-  margin: auto;
-  border-radius: 50%;
-  background-color: #22a9ca;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
-/* .signup__item::after {
-  content: "";
+.signup__item {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  transform: translateX(50%);
-  z-index: 1;
-  display: block;
-  width: 16px;
-  height: 16px;
-  margin: auto;
-  color: #fff;
-  background-color: #ddd;
-  border-radius: 50%;
-} */
+  transform: translate(-50%, -45%);
+  text-align: center;
+  width: 25%;
+}
+
+.signup__item--first {
+  transform: translate(-50%, -14%);
+}
 
 .signup__box {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  transform: translateX(50%);
-  z-index: 1;
+  position: relative;
   width: 16px;
   height: 16px;
   margin: auto;
-  color: #fff;
-  background-color: #ddd;
   border-radius: 50%;
+  background-color: #ddd;
 }
 
 .signup__box--complete {
@@ -296,6 +262,14 @@ img {
   height: 6px;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.signup__top {
+  margin-bottom: 4px;
+}
+
+.signup__bottom {
+  margin-top: 4px;
 }
 
 .signup__footer {
