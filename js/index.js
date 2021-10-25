@@ -14,7 +14,7 @@ getData();
 setEvent();
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -160,23 +160,23 @@ function scrollAni(dY) {
       if (dY > element.offsetTop - screenHeight / 2) {
         element.classList.add(`js-${item}`);
         if (element.classList.contains('train__body')) {
-          // count = 0;
-          animateNum(element);
+          animateNum(element, 0);
         }
       }
     });
   });
 }
 
-function animateNum(item) {
-  let count = parseInt(item.children[0].textContent);
+function animateNum(item, num) {
+  // let count = parseInt(item.children[0].textContent);
   const target = parseInt(item.children[0].dataset.num);
   if (count < target) {
-    count = count + 1;
+    count = num + 1;
     item.children[0].textContent = count;
-    setTimeout(animateNum, 10, item);
+    setTimeout(animateNum, 10, item, count);
   } else {
     item.children[0].textContent = target;
+    count = 0;
   }
 }
 

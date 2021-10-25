@@ -834,14 +834,13 @@ img {
   }
 
   .top {
-    /* width: 100%; */
     bottom: 50px;
     right: 25px;
     margin: 0;
   }
   
   .top a {
-    right: 25px;
+    right: 0;
   }
 }
 
@@ -854,10 +853,6 @@ img {
     width: 670px;
     height: 360px;
     padding: 80px 0;
-  }
-
-  .signup {
-    width: 100%;
   }
 
   .signup__head, .signup__body, .signup__footer {
@@ -902,7 +897,6 @@ img {
   }
 
   .challenge {
-    width: 100%;
     margin-top: -20px;
   }
 
@@ -959,7 +953,7 @@ img {
 
   .course__sec + .course__sec::after {
     top: -60px;
-    left: 340px;
+    left: 50%;
     transform: rotate(90deg);
   }
   
@@ -1101,10 +1095,6 @@ img {
     left: 190px;
   }
 
-  .course__tit {
-    width: 430px;
-  }
-
   .challenge__btn {
     margin-top: 100px;
   }
@@ -1128,10 +1118,6 @@ img {
     font-size: 22px;
   }
 
-  .course__sec + .course__sec::after {
-    left: 200px;
-  }
-
   .course__sec .img__inner {
     height: 240px;
   }
@@ -1152,7 +1138,7 @@ img {
   }
 
   .train__table {
-    width: 420px;
+    width: 100%;
     margin-bottom: 80px;
   }
 
