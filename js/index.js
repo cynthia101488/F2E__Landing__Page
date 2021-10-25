@@ -12,7 +12,7 @@ getData();
 setEvent();
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -73,18 +73,6 @@ function renderProgress(arr, personNum, totalNum) {
   let str = '';
   let level = 0;
   arr.forEach(item => {
-    // str += `<li class="signup__item" style="left: ${item.level / totalNum * 100 + '%'}">
-    //           <div class="signup__top">
-    //             <span class="signup__text signup__text--sm">達</span>
-    //             <span class="signup__text signup__text--sm">${item.level}</span>
-    //             <span class="signup__text signup__text--sm">人</span>
-    //           </div>
-    //           <div class="signup__box ${personNum >= item.level ? 'signup__box--complete' : ''}"></div>
-    //           <div class="signup__bottom">
-    //             <span class="signup__text signup__text--sm">送 ${item.productName}</span>
-    //           </div>
-    //         </li>`;
-  
     str += `<li class="signup__item" style="width: ${(item.level - level) / totalNum * 100 + '%'}">
               <div class="signup__textbox signup__textbox--top">
                 <span class="signup__text signup__text--sm">達</span>
@@ -96,8 +84,20 @@ function renderProgress(arr, personNum, totalNum) {
                 <span class="signup__text signup__text--sm">送 ${item.productName}</span>
               </div>
               <div class="signup__box ${personNum >= item.level ? 'signup__box--complete' : ''}"></div>
-            </li>`
+            </li>`;
     level = item.level;
+
+    // str += `<li class="signup__item" style="left: ${item.level / totalNum * 100 + '%'}">
+    //           <div class="signup__top">
+    //             <span class="signup__text signup__text--sm">達</span>
+    //             <span class="signup__text signup__text--sm">${item.level}</span>
+    //             <span class="signup__text signup__text--sm">人</span>
+    //           </div>
+    //           <div class="signup__box ${personNum >= item.level ? 'signup__box--complete' : ''}"></div>
+    //           <div class="signup__bottom">
+    //             <span class="signup__text signup__text--sm">送 ${item.productName}</span>
+    //           </div>
+    //         </li>`;
   });
 
   elemProgress.innerHTML = str;
@@ -117,7 +117,7 @@ function renderPerson(personNum) {
               <button class="btn" type="button">搶先報名 »</button>
           </div>`;
   } else {
-    !isEnd ? str = `<span class="signup__full">已爆滿!</span>` : str = `<span class="signup__full">已額滿!</span>`
+    !isEnd ? str = `<span class="signup__full">已爆滿!</span>` : str = `<span class="signup__full">已額滿!</span>`;
   }
   elemPersonNum.innerHTML = str;
 }
@@ -164,28 +164,28 @@ function scrollAni() {
   });
 }
 
-// function 扁平化
-// let count = 0;
-// let timer = '';
 function animateNum(item) {
-  let count = 0;
+  let count = parseInt(item.childNodes[1].innerText);
   const target = parseInt(item.childNodes[1].dataset.num);
-  // timer = setInterval(renderNum, 10, item, target, timer);
-  let timer = setInterval(renderNum, 5);
-  function renderNum() {
+  if (count < target) {
     count = count + 1;
     item.childNodes[1].textContent = count;
-    if (count === target) {
-      clearInterval(timer);
-    }
+    setTimeout(animateNum, 10, item)
+  } else {
+    item.childNodes[1].textContent = target;
   }
 }
 
-// function renderNum(item, target, timer) {
-//   count = count + 1;
-//   item.childNodes[1].textContent = count;
-//   if (count === target) {
-//     clearInterval(timer)
+// function animateNum(item) {
+//   let count = 0;
+//   const target = parseInt(item.childNodes[1].dataset.num);
+//   let timer = setInterval(renderNum, 5);
+//   function renderNum() {
+//     count = count + 1;
+//     item.childNodes[1].textContent = count;
+//     if (count === target) {
+//       clearInterval(timer);
+//     }
 //   }
 // }
 
@@ -193,10 +193,10 @@ function listStateChange(e) {
   e.stopPropagation();
   const self = e.target;
   if (self.nodeName === 'I') {
-    elemNavList.classList.toggle('js-nav__ls');
+    elemNavList.classList.toggle('js-nav-display');
   } else {
     if (self.nodeName !== 'LI') {
-      elemNavList.classList.remove('js-nav__ls');
+      elemNavList.classList.remove('js-nav-display');
     }
   }
 }
