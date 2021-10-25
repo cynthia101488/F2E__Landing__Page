@@ -208,6 +208,16 @@ img {
   background-color: #ddd;
 }
 
+.signup__ls::before {
+  content: "預購開始";
+  position: absolute;
+  display: inline-block;
+  margin-top: 10px;
+  transform: translate(-50%, 100%);
+  font-size: 12px;
+  color: #fff;
+}
+
 .signup__item {
   position: relative;
   display: inline-block;
@@ -217,6 +227,7 @@ img {
   position: relative;
   left: 50%;
   display: inline-block;
+  white-space: nowrap;
 }
 
 .signup__textbox--top {
@@ -230,7 +241,6 @@ img {
 .signup__line {
   width: 0;
   height: 5px;
-  /* margin: 0; */
   background-color: #22a9ca;
 }
 
@@ -239,30 +249,28 @@ img {
   position: absolute;
   top: 0;
   bottom: 0;
+  transform: translateX(-50%);
   display: block;
   width: 16px;
   height: 16px;
   margin: auto;
-  border-radius: 50%;
   background-color: #22a9ca;
+  border-radius: 50%;
 }
 
-/* .signup__item::after {
+.signup__item:first-child::after {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 0;
-  transform: translateX(50%);
-  z-index: 1;
+  left: -3px;
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 6px;
+  height: 6px;
   margin: auto;
-  color: #fff;
-  background-color: #ddd;
+  background-color: #fff;
   border-radius: 50%;
-} */
+}
 
 .signup__box {
   position: absolute;
@@ -289,12 +297,12 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
   display: block;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  margin: auto;
   background-color: #fff;
+  border-radius: 50%;
 }
 
 .signup__footer {
@@ -864,11 +872,6 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .row {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-
   .banner__img {
     height: 745px;
   }
@@ -888,6 +891,18 @@ img {
     margin-right: 0;
   }
 
+  .signup__head {
+    width: 230px;
+  }
+
+  .signup__body {
+    width: 310px;
+  }
+
+  .signup__footer {
+    width: 230px;
+  }
+
   .signup__sale {
     font-size: 24px;
   }
@@ -900,21 +915,12 @@ img {
     font-size: 24px;
   }
 
-  .signup__line {
-    width: 225px;
-  }
-
-  .signup__item {
-    width: 30%;
-  }
-
   .signup__text {
     font-size: 16px;
   }
 
   .signup__text--lg {
     font-size: 28px;
-    font-weight: 900;
   }
 
   .signup__text--sm {
@@ -1077,7 +1083,6 @@ img {
 
   .signup {
     flex-wrap: wrap;
-    width: 100%;
   }
 
   .signup__body--first {
@@ -1093,16 +1098,7 @@ img {
     height: 100px;
   }
 
-  .signup__line {
-    width: 380px;
-  }
-
-  .signup__item {
-    width: 25%;
-  }
-
   .challenge {
-    width: 100%;
     margin-top: -30px;
   }
 
@@ -1185,10 +1181,6 @@ img {
 
   .train__tabletit, .train__item {
     font-size: 14px;
-  }
-
-  .top {
-    width: 100%;
   }
 
   .js-nav__ls {

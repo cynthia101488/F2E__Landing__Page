@@ -12,7 +12,7 @@ getData();
 setEvent();
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -67,10 +67,9 @@ function renderTime(endTime, personNum) {
   elemTime.innerHTML = str;
 }
 
-// 整個結構需改善，3 個 <li>
 function renderProgress(arr, personNum, totalNum) {
   const elemProgress = document.querySelector('#Progress');
-  const elemBar = document.querySelector('#Bar');
+  // const elemBar = document.querySelector('#Bar');
   let str = '';
   let level = 0;
   arr.forEach(item => {
@@ -92,7 +91,7 @@ function renderProgress(arr, personNum, totalNum) {
                 <span class="signup__text signup__text--sm">${item.level}</span>
                 <span class="signup__text signup__text--sm">人</span>
               </div>
-              <div class="signup__line" style="width:  ${personNum >= item.level ? '100%' : (personNum - level) / (item.level - level) * 100 + '%'}"></div>
+              <div class="signup__line" style="width: ${personNum >= item.level ? '100%' : (personNum - level) / (item.level - level) * 100 + '%'}"></div>
               <div class="signup__textbox signup__textbox--bottom">
                 <span class="signup__text signup__text--sm">送 ${item.productName}</span>
               </div>
