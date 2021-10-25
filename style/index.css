@@ -64,17 +64,18 @@ img {
   list-style-type: none;
 }
 
+.nav__item {
+  margin-left: 15px;
+}
+
 .nav__ls a {
+  display: block;
   text-decoration: none;
   color: #24b4d7;
 }
 
 .nav__ls a:hover {
   color: #000;
-}
-
-.nav__item {
-  margin-left: 15px;
 }
 
 .banner {
@@ -220,7 +221,6 @@ img {
 
 .signup__item {
   position: relative;
-  display: inline-block;
 }
 
 .signup__textbox {
@@ -249,20 +249,6 @@ img {
   position: absolute;
   top: 0;
   bottom: 0;
-  transform: translateX(-50%);
-  display: block;
-  width: 16px;
-  height: 16px;
-  margin: auto;
-  background-color: #22a9ca;
-  border-radius: 50%;
-}
-
-.signup__item:first-child::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
   left: -3px;
   display: block;
   width: 6px;
@@ -270,39 +256,27 @@ img {
   margin: auto;
   background-color: #fff;
   border-radius: 50%;
+  border: 5px solid #22a9ca;
 }
 
-.signup__box {
+.signup__item::after {
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   transform: translateX(50%);
   z-index: 1;
-  width: 16px;
-  height: 16px;
-  margin: auto;
-  background-color: #ddd;
-  border-radius: 50%;
-}
-
-.signup__box--complete {
-  background-color: #22a9ca;
-}
-
-.signup__box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: block;
   width: 6px;
   height: 6px;
   margin: auto;
   background-color: #fff;
   border-radius: 50%;
+  border: 5px solid #ddd;
+}
+
+.signup__box--complete::after{
+  border-color: #22a9ca;
 }
 
 .signup__footer {
@@ -860,7 +834,7 @@ img {
   }
 
   .top {
-    width: 100%;
+    /* width: 100%; */
     bottom: 50px;
     right: 25px;
     margin: 0;
@@ -1056,6 +1030,9 @@ img {
 
   .nav__item {
     margin-left: 0;
+  }
+
+  .nav__ls a {
     padding: 15px;
   }
 

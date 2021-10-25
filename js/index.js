@@ -6,13 +6,15 @@ const elemVideo = document.querySelector('#Video');
 const elemTop = document.querySelector('#Top');
 const aniArr = ['ani-fade-in-top', 'ani-fade-in-down'];
 let isEnd = false;
+let isMobile = screen.width <= 480;
+let count = 0;
 let dateTimer = setInterval(renderTime, 1000);
 
 getData();
 setEvent();
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -26,18 +28,18 @@ function setTemplate(data) {
   const len = data.list.length;
   let totalNum = data.list[len - 1].level;
   let arrList = data.list;
-  renderTime(endTime, personNum);
+  renderTime(endTime, personNum, totalNum);
   renderProgress(arrList, personNum, totalNum);
-  renderPerson(personNum);
+  renderPerson(personNum, totalNum);
 }
 
-function renderTime(endTime, personNum) {
+function renderTime(endTime, personNum, totalNum) {
   const elemTime = document.querySelector('#Time');
   const now = new Date();
   const diff = endTime - now;
   let str = '';
   if (diff > 0) {
-    if (personNum < 100) {
+    if (personNum < totalNum) {
       const day = Math.floor(diff / 1000 / 60 / 60 / 24);
       const hour = Math.floor(diff / 1000 / 60 / 60) % 24;
       const min = Math.floor(diff / 1000 / 60) % 60;
@@ -73,7 +75,7 @@ function renderProgress(arr, personNum, totalNum) {
   let str = '';
   let level = 0;
   arr.forEach(item => {
-    str += `<li class="signup__item" style="width: ${(item.level - level) / totalNum * 100 + '%'}">
+    str += `<li class="signup__item ${personNum >= item.level ? 'signup__box--complete' : ''}" style="width: ${(item.level - level) / totalNum * 100 + '%'}">
               <div class="signup__textbox signup__textbox--top">
                 <span class="signup__text signup__text--sm">達</span>
                 <span class="signup__text signup__text--sm">${item.level}</span>
@@ -83,7 +85,6 @@ function renderProgress(arr, personNum, totalNum) {
               <div class="signup__textbox signup__textbox--bottom">
                 <span class="signup__text signup__text--sm">送 ${item.productName}</span>
               </div>
-              <div class="signup__box ${personNum >= item.level ? 'signup__box--complete' : ''}"></div>
             </li>`;
     level = item.level;
 
@@ -104,10 +105,10 @@ function renderProgress(arr, personNum, totalNum) {
   // elemBar.style = `width: ${personNum / totalNum * 100 + '%'}`;
 }
 
-function renderPerson(personNum) {
+function renderPerson(personNum, totalNum) {
   const elemPersonNum = document.querySelector('#PersonNum');
   let str = '';
-  if (personNum < 100) {
+  if (personNum < totalNum) {
     str = `<div class="signup__info" id="personNum">
             <span class="signup__text">已有</span>
             <span class="signup__text signup__text--lg">${personNum}</span>
@@ -124,19 +125,22 @@ function renderPerson(personNum) {
 
 function setEvent() {
   const elemPlayBtn = document.querySelector('#PlayBtn');
+  let dY = 0;
   document.addEventListener('scroll', () => {
-    renderNav();
-    scrollAni();
+    dY = this.scrollY;
+    renderNav(dY);
+    scrollAni(dY);
   });
 
-  document.addEventListener('click', listStateChange);
+  if (isMobile) {
+    document.addEventListener('click', listStateChange);
+  }
   elemPlayBtn.addEventListener('click', showVideo);
   elemVideo.addEventListener('click', hideVideo);
   document.addEventListener('keyup', hideVideo);
 }
 
-function renderNav() {
-  let dY = this.scrollY;
+function renderNav(dY) {
   if (dY > 0) {
     elemNav.classList.add('js-nav-color');
   } else {
@@ -144,8 +148,7 @@ function renderNav() {
   }
 }
 
-function scrollAni() {
-  let dY = this.scrollY;
+function scrollAni(dY) {
   let screenHeight = this.innerHeight;
 
   aniArr.forEach(item => {
@@ -157,6 +160,7 @@ function scrollAni() {
       if (dY > element.offsetTop - screenHeight / 2) {
         element.classList.add(`js-${item}`);
         if (element.classList.contains('train__body')) {
+          // count = 0;
           animateNum(element);
         }
       }
@@ -165,25 +169,26 @@ function scrollAni() {
 }
 
 function animateNum(item) {
-  let count = parseInt(item.childNodes[1].innerText);
-  const target = parseInt(item.childNodes[1].dataset.num);
+  let count = parseInt(item.children[0].textContent);
+  const target = parseInt(item.children[0].dataset.num);
   if (count < target) {
     count = count + 1;
-    item.childNodes[1].textContent = count;
-    setTimeout(animateNum, 10, item)
+    item.children[0].textContent = count;
+    setTimeout(animateNum, 10, item);
   } else {
-    item.childNodes[1].textContent = target;
+    item.children[0].textContent = target;
   }
 }
 
 // function animateNum(item) {
 //   let count = 0;
-//   const target = parseInt(item.childNodes[1].dataset.num);
-//   let timer = setInterval(renderNum, 5);
+//   const target = parseInt(item.children[0].dataset.num);
+//   let timer = setInterval(renderNum, 10);
 //   function renderNum() {
 //     count = count + 1;
-//     item.childNodes[1].textContent = count;
-//     if (count === target) {
+//     item.children[0].textContent = count;
+//     if (count >= target) {
+//       item.children[0].textContent = target;
 //       clearInterval(timer);
 //     }
 //   }
