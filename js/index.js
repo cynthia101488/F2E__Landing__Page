@@ -14,7 +14,7 @@ getData();
 setEvent();
 
 function getData() {
-  const api = '../data/activity.json';
+  const api = './data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
