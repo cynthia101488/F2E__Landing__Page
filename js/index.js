@@ -1,20 +1,15 @@
-const elemNav = document.querySelector('#Nav');
-const elemNavLink = document.querySelectorAll('.nav__ls a');
-const elemNavList = document.querySelector('#NavList');
-const elemNavBtn = document.querySelector('#NavBtn');
 const elemVideo = document.querySelector('#Video');
 const elemTop = document.querySelector('#Top');
 const aniArr = ['ani-fade-in-top', 'ani-fade-in-down'];
 let isEnd = false;
 let isMobile = screen.width <= 480;
-let count = 0;
 let dateTimer = setInterval(renderTime, 1000);
 
 getData();
 setEvent();
 
 function getData() {
-  const api = './data/activity.json';
+  const api = '../data/activity.json';
   fetch(api)
     .then(res => res.json())
     .then(data => {
@@ -71,7 +66,6 @@ function renderTime(endTime, personNum, totalNum) {
 
 function renderProgress(arr, personNum, totalNum) {
   const elemProgress = document.querySelector('#Progress');
-  // const elemBar = document.querySelector('#Bar');
   let str = '';
   let level = 0;
   arr.forEach(item => {
@@ -87,22 +81,9 @@ function renderProgress(arr, personNum, totalNum) {
               </div>
             </li>`;
     level = item.level;
-
-    // str += `<li class="signup__item" style="left: ${item.level / totalNum * 100 + '%'}">
-    //           <div class="signup__top">
-    //             <span class="signup__text signup__text--sm">達</span>
-    //             <span class="signup__text signup__text--sm">${item.level}</span>
-    //             <span class="signup__text signup__text--sm">人</span>
-    //           </div>
-    //           <div class="signup__box ${personNum >= item.level ? 'signup__box--complete' : ''}"></div>
-    //           <div class="signup__bottom">
-    //             <span class="signup__text signup__text--sm">送 ${item.productName}</span>
-    //           </div>
-    //         </li>`;
   });
 
   elemProgress.innerHTML = str;
-  // elemBar.style = `width: ${personNum / totalNum * 100 + '%'}`;
 }
 
 function renderPerson(personNum, totalNum) {
@@ -141,6 +122,7 @@ function setEvent() {
 }
 
 function renderNav(dY) {
+  const elemNav = document.querySelector('#Nav');
   if (dY > 0) {
     elemNav.classList.add('js-nav-color');
   } else {
@@ -148,9 +130,9 @@ function renderNav(dY) {
   }
 }
 
+
 function scrollAni(dY) {
   let screenHeight = this.innerHeight;
-
   aniArr.forEach(item => {
     let elemItems = document.querySelectorAll(`.${item}`);
     elemItems.forEach(element => {
@@ -160,41 +142,28 @@ function scrollAni(dY) {
       if (dY > element.offsetTop - screenHeight / 2) {
         element.classList.add(`js-${item}`);
         if (element.classList.contains('train__body')) {
-          animateNum(element, 0);
+          animateNum(element);
         }
       }
     });
   });
 }
 
-function animateNum(item, num) {
-  // let count = parseInt(item.children[0].textContent);
+function animateNum(item) {
+  let count = 0;
   const target = parseInt(item.children[0].dataset.num);
-  if (count < target) {
-    count = num + 1;
+  let timer = setInterval(() => {
+    count = count + 1;
     item.children[0].textContent = count;
-    setTimeout(animateNum, 10, item, count);
-  } else {
-    item.children[0].textContent = target;
-    count = 0;
-  }
+    if (count >= target) {
+      item.children[0].textContent = target;
+      clearInterval(timer);
+    }
+  }, 10);
 }
 
-// function animateNum(item) {
-//   let count = 0;
-//   const target = parseInt(item.children[0].dataset.num);
-//   let timer = setInterval(renderNum, 10);
-//   function renderNum() {
-//     count = count + 1;
-//     item.children[0].textContent = count;
-//     if (count >= target) {
-//       item.children[0].textContent = target;
-//       clearInterval(timer);
-//     }
-//   }
-// }
-
 function listStateChange(e) {
+  const elemNavList = document.querySelector('#NavList');
   e.stopPropagation();
   const self = e.target;
   if (self.nodeName === 'I') {
